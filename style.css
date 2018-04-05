@@ -1,0 +1,185 @@
+body {
+    background-color: #e7ecf0;
+    -webkit-font-smoothing: antialiased;
+    color: #14171a;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    min-width: 780px;
+}
+
+html {
+    width:100vw;
+    overflow-x:hidden;
+}
+
+.left-shoulder {
+	padding-left: 7%;
+}
+
+.right-shoulder {
+	padding-right: 7%;
+}
+
+.twittler {
+	color: #49a1ec;
+}
+
+.feed-head {
+	background-color: #fff;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 12px;
+/*	padding-top: 11px;*/
+	height: 45px;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 1px;
+}
+
+.tweets-button {
+	padding-top: 7.25px;
+	/*padding-right: 15px;*/
+}
+
+.tweets {
+	padding-top: 11px;
+}
+
+
+.tweet-div {
+	padding-left: 15px;
+	padding-top: 11px;
+	padding-bottom: 12px;
+	background-color: #fff;
+	margin-bottom: 1px;
+	margin-top: 1px;
+}
+
+.tweet-div:hover{
+	background-color: #f6f8fa;
+}
+/*text formatting*/
+
+.tweet-input {
+	background-color: #e7ecf0;
+}
+
+.tweet-input:hover{
+	background-color: #fff;
+}
+
+.tweet-input-div {
+	padding-left: 15px;
+	padding-top: 11px;
+	padding-bottom: 12px;
+	background-color: #fff;
+	margin-bottom: 1px;
+	margin-top: 1px;
+}
+
+.tweet-user {
+	font-size: 14px;
+	font-weight: 700;
+	margin-left: 10px;
+	margin-bottom: -10px;
+}
+
+.tweet-user:hover {
+    color: #177fbf;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tweet-at {
+	font-size: 14px;
+	color: #68747e;
+}
+
+.tweet-at:hover {
+    cursor: pointer;
+}
+
+.tweet-at-first-letter {
+	font-size: 14px;
+	color: #68747e;
+}
+
+.tweet-at-first-letter :hover {
+    cursor: pointer;
+}
+
+.tweet-body {
+	font-size: 14px;
+	font-weight: 400;
+	text-align: left;
+	line-height: 20px;
+	margin-left: 10px;
+}
+
+.tweet-timestamp {
+	font-size: 14px;
+	color: #68747e;
+}
+
+.btn-turquoise {
+    color: #fff;
+    background-color: #1c94e0;
+    border-color: #1c94e0;
+}
+
+.btn-turquoise:hover {
+    color: #fff;
+    background-color: #177fbf;
+    border-color: #126599;
+}
+
+.btn-turquoise.focus,.btn-turquoise:focus {
+    box-shadow: 0 0 0 .2rem rgba(11,59,89, 0.8)
+}
+
+.btn-turquoise.disabled,.btn-turquoise:disabled {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-turquoise:not(:disabled):not(.disabled).active,.btn-turquoise:not(:disabled):not(.disabled):active,.show>.btn-turquoise.dropdown-toggle {
+    color: #fff;
+    background-color: #1d2124;
+    border-color: #171a1d;
+}
+
+.btn-turquoise:not(:disabled):not(.disabled).active:focus,.btn-turquoise:not(:disabled):not(.disabled):active:focus,.show>.btn-turquoise.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(11,59,89, 0.8)
+}
+
+.avatar-small {
+	border-radius: 50%;
+}
+
+.avatar-div {
+	float: left;
+}
+
+.tweet-input-avatar {
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
+
+/*.refresh {
+	padding-top: 3px;
+}*/
+
+/*0b3b59*/
+
+/*twitter colors:
+
+twittler blue		1c94e0
+
+bg 					e7ecf0
+
+buttons				1c94e0 126599
+button mouseover 	177fbf, border 126599
+
+text black 			14171a
+text grey 			68747e (on highlight color is same as button mouseover)*/
