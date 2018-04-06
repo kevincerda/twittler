@@ -45,33 +45,45 @@
       $(document).ready(function(){
         var $body = $('.timeline-feed');
         $body.html('');
-
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet-div ' + tweet.user + '"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.html('<div class="username">@' + tweet.user + '</div>: ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }
 
-        $('.refresh').on('click', function() {
-          var $body = $('.timeline-feed');
-          $body.html('');
+      $('.username').on('click', function() {
+       const getClasses = $(this).parent()[0].className;
+       const parentClass = getClasses.split(' ')[1];
+       $('.tweet-div').not('.' + parentClass).toggle();
+      });
 
-          var index = streams.home.length - 1;
-          while(index >= 0){
-            var tweet = streams.home[index];
-            var $tweet = $('<div class="tweet-div ' + tweet.user + '"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($body);
-            index -= 1;        
-          }
+      $('.refresh').on('click', function() {
+        var $body = $('.timeline-feed');
+        $body.html('');
+        var index = streams.home.length - 1;
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet = $('<div class="tweet-div ' + tweet.user + '"></div>');
+          $tweet.html('<div class="username">@' + tweet.user + '</div>: ' + tweet.message);
+          $tweet.appendTo($body);
+          index -= 1;        
+        }
+
+      $('.username').on('click', function() {
+       const getClasses = $(this).parent()[0].className;
+       const parentClass = getClasses.split(' ')[1];
+       $('.tweet-div').not('.' + parentClass).toggle();
+      });
 
 
 
 
-        });
+
+
+      });
 
 
 
