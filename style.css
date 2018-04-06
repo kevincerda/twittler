@@ -49,6 +49,10 @@ html {
 
 
 .tweet-div {
+	font-size: 14px;
+	font-weight: 400;
+	text-align: left;
+	line-height: 20px;
 	padding-left: 15px;
 	padding-top: 11px;
 	padding-bottom: 12px;
@@ -110,13 +114,6 @@ html {
     cursor: pointer;
 }
 
-.tweet-body {
-	font-size: 14px;
-	font-weight: 400;
-	text-align: left;
-	line-height: 20px;
-	margin-left: 10px;
-}
 
 .tweet-timestamp {
 	font-size: 14px;
