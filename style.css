@@ -43,6 +43,8 @@ html {
 
 .tweets {
 	padding-top: 11px;
+	font-size: 18px;
+	font-weight: 700;
 }
 
 
@@ -157,6 +159,11 @@ html {
 	border-radius: 50%;
 }
 
+.avatar-large {
+	border-radius: 50%;
+	border-image: 4px solid white;
+}
+
 .avatar-div {
 	float: left;
 }
@@ -166,20 +173,7 @@ html {
 	margin-bottom: 15px;
 }
 
-/*.refresh {
-	padding-top: 3px;
-}*/
-
-/*0b3b59*/
-
-/*twitter colors:
-
-twittler blue		1c94e0
-
-bg 					e7ecf0
-
-buttons				1c94e0 126599
-button mouseover 	177fbf, border 126599
-
-text black 			14171a
-text grey 			68747e (on highlight color is same as button mouseover)*/
+.logo {
+	width: 110px;
+	height: auto;
+}

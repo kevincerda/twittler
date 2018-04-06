@@ -7,60 +7,38 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
     <link rel="stylesheet" type='text/css' href="open-iconic/font/css/open-iconic-bootstrap.css">
-
     <link rel='stylesheet' type='text/css' href='style.css'>
-
     <script src="jquery.js"></script>
     <script src="moment.js"></script>
     <script src="data_generator.js"></script>
     <script src="livestamp.js"></script>
     <title>Twittler!</title>
   </head>
+
   <body>
     <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-white">
-      <a class="left-shoulder navbar-brand col" ><img src='image_45px.png' class="refresh tweet-at"></a>
+      <a class="left-shoulder navbar-brand col" ><img src='image_45px.png' class="refresh tweet-at logo"></a>
       <div class="col-5"></div><div class='col'></div>
     </nav>
-
     <div class="container-fluid" style="margin-top: 1rem;">
-      <div class="row">
-        <div class="col left-shoulder">
-          <div class="feed-head tweets">
-          <center><p>Left User side</p></center>
-          </div>
-        </div>
-        <div class="col-5">
-          <div >
+      <div class="row">       
+        <div class="col-5 offset-3">
+          <div>
             <div class="feed-head">
               <div class="row">
-              <div class='col tweets'>Tweets</div><div class='col tweets-button'><button type="button" class="refresh btn btn-turquoise btn-sm float-right"><span class="oi oi-reload align-middle" title="reload" aria-hidden="true"></span></button></div>
-            </div>
-            </div>
-            <div id="feed">
-              <span>@mracus: productively enjoyed my bad decision #yolo</span>
-            </div>
-          </div>
-        </div>
-        <div class="col right-shoulder">
-<!--           <div class="feed-head tweets">
-          <center><p>What's Happening?</p></center>
-          </div> -->
-          <div class="tweet-input-div">
-            <form>
-              <div class="form-group row">
-                <div class="col-1"><img class="avatar-small" src="user_icons/generic_45.png"></img></div><div class="col"></div><div class="col-9"><input class="form-control tweet-input" type="text" placeholder="What's happening?"></div><div class="col-1"></div>
+                <div class='col tweets'>Tweets</div>
+                  <div class='col tweets-button'><button type="button" class="refresh btn btn-turquoise btn-sm float-right"><span class="oi oi-reload align-middle" title="reload" aria-hidden="true"></span></button>
+                  </div>
               </div>
-              <button type="submit" class="btn-sm btn-turquoise submit-tweet">Tweet</button>
-            </form>
+            </div>
+            <div id="feed"></div>
           </div>
         </div>
       </div>
     </div>
 
     <script>
-
       $(document).ready(function(){
         var $body = $('#feed');
         $body.html('');
