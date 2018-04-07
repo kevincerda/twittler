@@ -27,10 +27,13 @@
           <div>
             <div class="feed-head">
               <div class="row">
-                <div class='col tweets'>Tweets</div>
-                  <div class='col tweets-button'>
+                <div class='col-8'>
+                  <input class="form-control compose-tweet" type="text" placeholder="What's Happening?">
+                </div>
+                  <div class='col-4 tweets-button'>
                     <button type="button" class="refresh btn btn-turquoise btn-sm float-right">
                       <span class="oi oi-reload align-middle" title="reload" aria-hidden="true"></span>
+                      <!-- <span class="badge badge-light tweet-count"></span> -->
                     </button>
                   </div>
               </div>
@@ -49,7 +52,7 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet-div ' + tweet.user + '"></div>');
-          $tweet.html('<div class="username">@' + tweet.user + '</div>: ' + tweet.message);
+          $tweet.html('<div class="username">@' + tweet.user + ':</div> ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }
@@ -60,6 +63,25 @@
        $('.tweet-div').not('.' + parentClass).toggle();
       });
 
+      $('.compose-tweet').keypress(function(e) {
+        const key = e.which;
+        if (key === 13) {
+          var $body = $('.timeline-feed');
+          window.visitor = 'guest';
+
+          if (!streams.users[window.visitor]) {
+            streams.users[window.visitor] = [];
+          }
+
+          const newTweet = writeTweet($(this).val());
+          const $tweet = $('<div class="tweet-div ' + newTweet.user + '"></div>');
+          $tweet.html('<div class="username">@' + newTweet.user + ':</div> ' + newTweet.message);
+          $tweet.prependTo($body);
+        }
+      });
+
+
+
       $('.refresh').on('click', function() {
         var $body = $('.timeline-feed');
         $body.html('');
@@ -67,7 +89,7 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet-div ' + tweet.user + '"></div>');
-          $tweet.html('<div class="username">@' + tweet.user + '</div>: ' + tweet.message);
+          $tweet.html('<div class="username">@' + tweet.user + ':</div> ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;        
         }
@@ -79,178 +101,7 @@
       });
 
 
-
-
-
-
       });
-
-
-
-
-
-
-        // $('.refresh').on('click', function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.home.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.home[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     var userSpan = tweet.user;
-        //     let respawn = '';
-        //     if (tweet.user === 'shawndrost') {
-        //       userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/shawndrost_45.png"></img></div><span class="tweet-user shawndrost">Shawn Drost</span><span class="tweet-at shawndrost"> @shawndrost &#183;</span>';
-        //       respawn = shawnsTweets;
-        //       } else if (tweet.user === 'sharksforcheap') {
-        //         userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/sharky_45.png"></div></img><span class="tweet-user sharksforcheap">Sharky</span><span class="tweet-at sharksforcheap"> @sharksforcheap &#183;</span>';
-        //         respawn = sharksTweets;
-        //       } else if (tweet.user === 'sallycodenaji') {
-        //         userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/sally_45.png"></img></div><span class="tweet-user sallycodenaji">Sally Raj Naji</span><span class="tweet-at sallycodenaji"> @sallycodenaji &#183;</span>';
-        //         respawn = sallysTweets;
-        //       } else if (tweet.user === 'pablocalhoun') {
-        //         userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/pablo_45.png"></img></div><span class="tweet-user pablocalhoun">Pablo Calhoun</span><span class="tweet-at pablocalhoun"> @pablocalhoun &#183;</span>';
-        //         respawn = pablosTweets;
-        //       } else if (tweet.user === 'visitor') {
-        //         userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/generic_45.png"></img></div><span class="tweet-user visitor">Visitor</span><span class="tweet-at visitor"> @visitor &#183;</span>'
-        //     }
-        //     $tweet.html(userSpan + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.on('click', respawn);
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // });
-
-
-        // var index = streams.home.length - 1;
-        // while(index >= 0){
-        //   var tweet = streams.home[index];
-        //   var $tweet = $('<div class="tweet-div"></div>');
-        //   var userSpan = tweet.user; 
-        //   if (tweet.user === 'shawndrost') {
-        //       userSpan = '<div class="avatar-div"><img class="avatar-small" src="user_icons/shawndrost_45.png"></img></div><span class="tweet-user shawndrost">Shawn Drost</span><span class="tweet-at shawndrost"> @shawndrost &#183;</span>'
-        //     } else if (tweet.user === 'sharksforcheap') {
-        //       userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/sharky_45.png"></div></img><span class="tweet-user sharksforcheap">Sharky</span><span class="tweet-at sharksforcheap"> @sharksforcheap &#183;</span>'
-        //     } else if (tweet.user === 'sallycodenaji') {
-        //       userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/sally_45.png"></img></div><span class="tweet-user sallycodenaji">Sally Raj Naji</span><span class="tweet-at sallycodenaji"> @sallycodenaji &#183;</span>'
-        //     } else if (tweet.user === 'pablocalhoun') {
-        //       userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/pablo_45.png"></img></div><span class="tweet-user pablocalhoun">Pablo Calhoun</span><span class="tweet-at pablocalhoun"> @pablocalhoun &#183;</span>'
-        //     } else if (tweet.user === 'visitor') {
-        //       userSpan = '<div style="float: left;"><img class="avatar-small" src="user_icons/generic_45.png"></img></div><span class="tweet-user visitor">Visitor</span><span class="tweet-at visitor"> @visitor &#183;</span>'
-        //   }
-        //   $tweet.html(userSpan + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //   $tweet.appendTo($body);
-        //   index -= 1;
-        // }
-
-        // var visitorMessage = $('input:first').val();
-
-        // var tweetSubmit = function(e) {
-        //   console.log(e.target);
-        //   const visitorMessage = e.target.value;
-        //   // var $body = $('#feed');
-        //   // $body.html('');
-        //   var tweet = writeTweet(visitorMessage);
-        //   var $tweet = $('<div class="tweet-div"></div>');
-        //   $tweet.on('click', tweetSubmit);
-        //   $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/generic_45.png"></img></div><span class="tweet-user visitor">Visitor</span><span class="tweet-at visitor"> @visitor &#183;</span> <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.visitorMessage + '</span> ');
-        //   $tweet.prependTo($body);
-        // };
-
-
-
-        // $('.submit-tweet').on('click', function(e){
-        //   event.preventDefault();
-        //   tweetSubmit(e);
-        // });
-
-        // var pablosTweets = function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.users.pablocalhoun.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.users.pablocalhoun[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/pablo_45.png"></img></div><span class="tweet-user pablocalhoun">Pablo Calhoun</span><span class="tweet-at pablocalhoun"> @pablocalhoun &#183;</span>' + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // };
-
-        // $('.pablocalhoun').on('click', pablosTweets);
-
-
-        // var sharksTweets = function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.users.sharksforcheap.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.users.sharksforcheap[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     $tweet.on('click', sharksTweets);
-        //     $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/sharky_45.png"></div></img><span class="tweet-user sharksforcheap">Sharky</span><span class="tweet-at sharksforcheap"> @sharksforcheap &#183;</span>' + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // };
-
-        // $('.sharksforcheap').on('click', sharksTweets);
-
-
-        // var sallysTweets = function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.users.sallycodenaji.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.users.sallycodenaji[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     $tweet.on('click', sallysTweets);
-        //     $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/sally_45.png"></img></div><span class="tweet-user sallycodenaji">Sally Raj Naji</span><span class="tweet-at sallycodenaji"> @sallycodenaji &#183;</span>' + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // };
-
-        // $('.sallycodenaji').on('click', sallysTweets);
-
-
-        // var shawnsTweets = function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.users.shawndrost.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.users.shawndrost[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/shawndrost_45.png"></img></div><span class="tweet-user shawndrost">Shawn Drost</span><span class="tweet-at shawndrost"> @shawndrost &#183;</span>' + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // };
-
-        // $('.shawndrost').on('click', shawnsTweets);
-
-
-        // var visitorsTweets = function() {
-        //   var $body = $('#feed');
-        //   $body.html('');
-        //   var index = streams.users.visitor.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.users.visitor[index];
-        //     var $tweet = $('<div class="tweet-div"></div>');
-        //     $tweet.html('<div style="float: left;"><img class="avatar-small" src="user_icons/generic_45.png"></img></div><span class="tweet-user visitor">Visitor</span><span class="tweet-at visitor"> @visitor &#183;</span>' + ' <span class="tweet-timestamp" data-livestamp=' + tweet.created_at + '></span><br><span class="tweet-body">' + tweet.message + '</span> ');
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
-        // };
-
-        // $('.visitor').on('click', visitorsTweets);
-        //   // tweet.user.shawndrost
-        //   // <span class=“user”>username</span>
-        //   // $(‘.user).on(‘click’, function…..
-        //   // var x = $(this).text();
-        //   // tweet.user[x];
-        //   //         // loop through stream.home 
-
       });
 
     </script>
